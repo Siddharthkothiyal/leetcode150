@@ -1,14 +1,14 @@
-package Graphs.BFS;
+package Graphs.topoSort;
+
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-public class cycleinDirected {
-
+public class courseSchedule2 {
     public int[] findOrder(int numCourses, int[][] prerequisites) {
-        // code here
+          // code here
         List<List<Integer>> adjLs = new ArrayList<>();
 
               for (int i = 0; i < numCourses; i++) {
@@ -42,7 +42,7 @@ public class cycleinDirected {
               while (!q.isEmpty()) {
                   int node = q.peek();
                   q.remove();
-                  topo[index]= node;
+                  topo[index++]= node;
 
                   for (Integer adjNode : adjLs.get(node)) {
 
@@ -53,10 +53,13 @@ public class cycleinDirected {
                   }
 
               }
+                 if (index != numCourses) {
+            return new int[0];
+        }
+
 
 
               return  topo;
-
     }
-
+    
 }
