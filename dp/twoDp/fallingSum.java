@@ -14,19 +14,23 @@ public class fallingSum {
             return matrix[i][j];
         }
 
-        if (dp[i][j] !=  1000000000);
+
+         int up =0;
+         int leftD=0;
+            int rightD=0;
+        if (dp[i][j] != 1000000000) {
             return dp[i][j];
 
-        int up = function(i - 1, j, m, n, matrix, dp);
-        int leftD = function(i - 1, j - 1, m, n, matrix, dp);
-        ;
-        int rightD = function(i - 1, j + 1, m, n, matrix, dp);
-        ;
+            up = function(i - 1, j, m, n, matrix, dp);
+         leftD = function(i - 1, j - 1, m, n, matrix, dp);
+            
+             rightD = function(i - 1, j + 1, m, n, matrix, dp);
+            
 
-        int mini = matrix[i][j] + Math.min(up, Math.min(leftD, rightD));
+         
 
-        return dp[i][j] = mini;
-
+        }
+        return dp[i][j] = matrix[i][j] + Math.min(up, Math.min(leftD, rightD));
     }
 
     public static int minFallingPathSum(int[][] matrix) {
@@ -37,16 +41,14 @@ public class fallingSum {
         int[][] dp = new int[m + 1][n + 1];
 
         for (int[] d : dp) {
-            Arrays.fill(d,  1000000000);
+            Arrays.fill(d, 1000000000);
         }
 
-           int answer = 1000000000;
-
-     
+        int answer = 1000000000;
 
         for (int j = 0; j < n; j++) {
-            int min =  function(m - 1, j, m, n, matrix, dp);
-            answer= Math.min(answer, min);
+            int min = function(m - 1, j, m, n, matrix, dp);
+            answer = Math.min(answer, min);
         }
 
         return answer;
